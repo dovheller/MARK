@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MARK · דף אחד למתכנת</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Rubik:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F2EE; --surface:#fff; --surface-2:#ECE8E1; --ink:#13202E; --muted:#4B5563; --line:#DDD8CF;
+  --accent:#C2410C; --accent-ink:#9A3412; --accent-soft:#FBE7DC; --ok:#0F766E; --navy:#13202E; --red:#9B2F2A;
+  --r-client:#1D4ED8; --r-chat:#6D28D9; --r-mark:#C2410C; --r-crew:#0F766E;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1620; --surface:#16212E; --surface-2:#1E2B3A; --ink:#EEF1F5; --muted:#A9B3C1; --line:#2A394B;
+  --accent:#F08A5A; --accent-ink:#FDBA8C; --accent-soft:#3A2418; --ok:#4FC2B2; --navy:#0A1018; --red:#F08A82;
+  --r-client:#7EA2FF; --r-chat:#B79BFF; --r-mark:#F08A5A; --r-crew:#4FC2B2;
+}}
+:root[data-theme="dark"]{
+  --bg:#0E1620; --surface:#16212E; --surface-2:#1E2B3A; --ink:#EEF1F5; --muted:#A9B3C1; --line:#2A394B;
+  --accent:#F08A5A; --accent-ink:#FDBA8C; --accent-soft:#3A2418; --ok:#4FC2B2; --navy:#0A1018; --red:#F08A82;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,system-ui,"Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.5}
+main{max-width:1040px;margin:0 auto;padding:18px 16px 40px}
+h1{font-family:Rubik,sans-serif;font-weight:800;font-size:clamp(20px,3.2vw,27px);margin:6px 0 2px;line-height:1.15}
+h2{font-family:Rubik,sans-serif;font-size:14px;margin:0 0 7px;color:var(--accent-ink);letter-spacing:.01em}
+p{margin:4px 0}
+.draft{display:inline-block;border:1px solid var(--accent);color:var(--accent-ink);border-radius:99px;padding:1px 10px;font-size:11.5px;font-weight:700}
+.meta{color:var(--muted);font-size:12px;margin:2px 0 12px}
+.hero{background:var(--navy);color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:12px}
+.hero .draft{border-color:#FDBA8C;color:#FDBA8C}
+.hero h1{color:#fff}
+.hero p{color:#D7DEE6;font-size:13.5px;max-width:74ch}
+.hero b{color:#FDBA8C}
+.grid{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.c4{grid-template-columns:repeat(4,1fr)}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c2{grid-template-columns:1.05fr .95fr}
+.who{border-top:3px solid var(--rc)}
+.who b{display:block;font-family:Rubik,sans-serif;font-size:14px;color:var(--rc)}
+.who span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.r-client{--rc:var(--r-client)}.r-chat{--rc:var(--r-chat)}.r-mark{--rc:var(--r-mark)}.r-crew{--rc:var(--r-crew)}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:2px}
+.step{background:var(--surface-2);border-radius:9px;padding:7px 8px}
+.step i{font-style:normal;font-variant-numeric:tabular-nums;font-size:11px;color:var(--accent-ink);font-weight:700;display:block}
+.step b{display:block;font-size:12.5px;line-height:1.25;margin:1px 0}
+.step span{font-size:11px;color:var(--muted)}
+ol,ul{margin:0;padding-inline-start:1.15em}
+li{margin:3px 0}
+.rules li{margin:4px 0}
+.rules b{color:var(--accent-ink)}
+.mods{list-style:none;padding:0;margin:0;font-size:12.5px}
+.mods li{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.mods li:last-child{border:0}
+.mods code{font-size:11.5px;color:var(--muted);direction:ltr;unicode-bidi:embed}
+.open{border-inline-start:4px solid var(--red)}
+.ok{border-inline-start:4px solid var(--ok)}
+.note{border-inline-start:4px solid var(--accent)}
+.small{font-size:12px;color:var(--muted)}
+.noa{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:12.5px;margin-top:12px}
+.noa b{color:var(--accent-ink)}
+footer{color:var(--muted);font-size:11.5px;margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+@media (max-width:860px){.c4,.c3,.c2{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}}
+@media print{
+  body{background:#fff;font-size:8.6px;line-height:1.29}
+  main{padding:0;max-width:none}
+  h1{font-size:18px}h2{font-size:10.5px;margin-bottom:4px}
+  .hero{border-radius:0;padding:8px 11px;margin-bottom:6px}
+  .hero p{font-size:8.6px;max-width:none}
+  .grid{gap:4px}.card{padding:6px 8px;border-radius:7px}
+  .grid[style],.card[style]{margin-top:5px !important}
+  ol,ul{padding-inline-start:1.05em}li{margin:1.5px 0}.rules li{margin:2.5px 0}
+  .mods li{padding:1.5px 0}
+  .flow{gap:4px}.step{padding:4px 5px;border-radius:6px}
+  .noa{margin-top:5px;padding:5px 8px;font-size:8.6px}
+  footer{margin-top:5px;padding-top:4px;font-size:8px}
+  .c4,.c3{grid-template-columns:repeat(4,1fr)}.c2{grid-template-columns:1.05fr .95fr}
+  @page{size:A4;margin:9mm}
+}
+</style>
+</head>
+<body>
+<main>
+
+<div class="hero">
+  <span class="draft">טיוטה, לאישור דב לפני מסירה</span>
+  <h1>MARK · מערכת מארק הובלות: דף אחד למתכנת</h1>
+  <p>מארק הובלות, ירושלים, 20 שנה, שני אחים. אנחנו בונים את מערכת התפעול השלמה שלהם, מהמודעה בפיד ועד הארגז האחרון וההפניה לחבר. <b>ההבטחה ללקוח היא אחת: מחיר מדויק לפני שמרימים ארגז, לא "בערך" בטלפון.</b> כל החלטה בקוד נמדדת מולה. התהליך מתועד כ-43 מסכים ממוספרים, וכל אפיון מפנה אליהם, כך שלכולנו שפה אחת.</p>
+</div>
+
+<div class="grid c4">
+  <div class="card who r-client"><b>לקוח</b><span>דף נחיתה, טופס 4 שדות, שאלון בדפדפן, וואטסאפ, דף הצעה, תשלום, מעקב חי, ביקורת</span></div>
+  <div class="card who r-chat"><b>בוט וואטסאפ</b><span>שולח שאלון, תזכורות, הצעה בשם מארק, תזכורת ערב לפני, קבלות, צפי הגעה</span></div>
+  <div class="card who r-mark"><b>מארק</b><span>לוח לידים, תיק לקוח, מחשבון, שיחת השלמה, שיבוץ, בקרה חיה, התאמת תשלומים</span></div>
+  <div class="card who r-crew"><b>צוות</b><span>אפליקציית שטח: משימת היום, צ׳ק-אין, שעון עבודה, חריגות, סיור סיום, גביית מזומן</span></div>
+</div>
+
+<div class="card" style="margin-top:12px">
+  <h2>המסלול: שישה שלבים, 43 מסכים</h2>
+  <div class="flow">
+    <div class="step"><i>01-05</i><b>גילוי והרשמה</b><span>מודעה, דף נחיתה, ליד</span></div>
+    <div class="step"><i>06-14</i><b>השאלון</b><span>14 שאלות, שליחה נעולה</span></div>
+    <div class="step"><i>15-22</i><b>תמחור והצעה</b><span>שעות, עיגול, תנאים</span></div>
+    <div class="step"><i>23-32</i><b>תשלום ושיבוץ</b><span>מקדמה, יומן, תיאומים</span></div>
+    <div class="step"><i>33-38</i><b>יום ההובלה</b><span>שעון חי, חריגות</span></div>
+    <div class="step"><i>39-43</i><b>סגירה והמלצה</b><span>חשבון, קבלה, הפניה</span></div>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:12px">
+  <div class="card">
+    <h2>תשעה כללים שהקוד צריך לאכוף, לא רק להציג</h2>
+    <ol class="rules">
+      <li><b>אין מחיר בלי שאלון מלא.</b> 14/14. כפתור השליחה נעול, והליד לא נכנס ל"לתמחור" לפני כן. זו ההבטחה עצמה, ולכן בדיקת שרת ולא ולידציה בדפדפן.</li>
+      <li><b>הבוט עושה את הרדיפה, לא מארק.</b> תזכורת ב-20 דקות וב-24 שעות, ואז הליד מסומן "קר". אין מסך שדוחף את מארק להתקשר למי שלא ענה.</li>
+      <li><b>המחיר נגזר משעות, לא מהקלדה חופשית.</b> כל רכיב שעות נגזר מתשובה בשאלון, פלוס מרווח ביטחון, כפול תעריף העונה (קיץ 550 ₪, עונה חלשה 450-500 ₪).</li>
+      <li><b>תוקף הצעה 48 שעות</b>, ומה שפג לא מתמחר את עצמו מחדש בשקט.</li>
+      <li><b>המקדמה נועלת את התאריך.</b> העברה בנקאית שומרת אותו 24 שעות עד אישור ידני של מארק. <b>מזומן קיים רק ליתרה</b>, ואת זה אוכפים בשרת.</li>
+      <li><b>פרטי כרטיס לא עוברים דרכנו.</b> הסליקה אצל חברת הסליקה; אצלנו לכל היותר 4 ספרות, תוקף ושם. לא במסד, לא בלוגים, לא בוואטסאפ.</li>
+      <li><b>חריגה ביום ההובלה היא בקשה, לא עובדה.</b> תמונה, אישור הלקוח והחלטת מארק (לחייב / ללא חיוב) לפני שהצוות מבצע.</li>
+      <li><b>החשבון הסופי נגזר משעות בפועל ומתוספות שאושרו בלבד.</b> החתימה בסיור הסיום סוגרת את שעון העבודה.</li>
+      <li><b>[סוגריים מרובעים] פירושם "עוד לא נקבע".</b> אל תמלא אותם בהנחה סבירה: זו שאלה פתוחה שממתינה למארק.</li>
+    </ol>
+  </div>
+  <div>
+    <div class="card">
+      <h2>שמונה המודולים, ואיפה הם נוגעים בתהליך</h2>
+      <ul class="mods">
+        <li>מודעות ודף נחיתה <code>01-02</code></li>
+        <li>CRM לידים <code>03-43</code></li>
+        <li>בוט וואטסאפ <span class="small">רוחבי, לכל השלבים</span></li>
+        <li>מנוע שאלון <code>06-14</code></li>
+        <li>מחשבון עונתי <code>16-18, 21</code></li>
+        <li>יומן צוותים ומשאיות <code>11, 29-31</code></li>
+        <li>אפליקציית צוות <code>33-40</code></li>
+        <li>תשלומים וחשבוניות <code>23-28, 39-41</code></li>
+      </ul>
+    </div>
+    <div class="card note" style="margin-top:12px">
+      <h2>איך לקרוא את האפיונים</h2>
+      <ul class="small">
+        <li>מסמך לכל שלב. לכל מסך: מה המשתמש רואה, מה המערכת עושה, מה נשמר, ומה קורה במקרה קצה.</li>
+        <li>מספר מסך הוא כתובת: "מסך 27" מזהה אותו דבר אצלך, אצלי ואצל מארק. אותו דבר למונחי המילון (ליד קר, שאלון נעול, סעיף תוספות, חריגה).</li>
+        <li>שמות השדות והישויות הם הצעה. מותר לשנות שמות, לא משמעות.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid c2" style="margin-top:12px">
+  <div class="card open">
+    <h2>שבע הכרעות שחסרות לפני שכותבים את שלב התשלום</h2>
+    <ul class="small">
+      <li><b>סכום המקדמה:</b> סכום קבוע או אחוז מההצעה.</li>
+      <li><b>תנאי ביטול והחזר:</b> הנוסח, ומה קורה לכסף לפני ואחרי שיבוץ.</li>
+      <li><b>ספק סליקה ל"בקליק":</b> דף מאורח, טוקניזציה, webhook, idempotency, 3 תשלומים.</li>
+      <li><b>ביט ופייבוקס לעסקים:</b> API לבקשות ולאישורים, או מסלול ידני בגרסה הראשונה.</li>
+      <li><b>ספק הבוט:</b> WhatsApp Business API רשמי, ומגבלות התבניות המאושרות.</li>
+      <li><b>קבלות:</b> איזה ספק ואיזה מסמך (קבלה / חשבונית-קבלה). שאלה לרואה החשבון.</li>
+      <li><b>אחסון תמונות ואסמכתאות:</b> איפה, לכמה זמן, מי מוחק.</li>
+    </ul>
+  </div>
+  <div class="card ok">
+    <h2>סדר בנייה מוצע</h2>
+    <ol class="small">
+      <li><b>ליד ו-CRM</b> (03-05): טופס 4 שדות, כרטיס, סטטוסים, מקור.</li>
+      <li><b>מנוע שאלון</b> (06-14): שמירה אחרי כל תשובה, קישור חתום אישי, נעילת שליחה.</li>
+      <li><b>שכבת טריגרים לבוט</b>, במקביל וכבר מההתחלה: כל שלב מכאן והלאה שולח הודעה.</li>
+      <li><b>מחשבון ודף הצעה</b> (15-22): פירוק שעות, תעריף עונה, עיגול, סעיף תוספות.</li>
+      <li><b>תשלומים ושריון תאריך</b> (23-28): כאן נדרשות ההכרעות שבצד.</li>
+      <li><b>יומן ושיבוץ</b> (29-32), ואחר כך <b>אפליקציית הצוות</b> (33-40) והסגירה (39-43).</li>
+    </ol>
+    <p class="small" style="margin-top:5px">הצעה, לא החלטה. אם הסדר לא מתאים לדרך העבודה שלך, נשמח לשמוע למה.</p>
+  </div>
+</div>
+
+<div class="noa">
+  <b>תרחיש אחד לכל המסמכים, וכדאי להריץ עליו כל מה שאתה בונה:</b> נועה, 3 חדרים, גילה (קומה ב׳, ללא מעלית, סחיבה 40 מ׳) ← קריית יובל (קומה 3, מעלית שמורה), חמישי 3.12.2026 ב-08:00, צוות A ומשאית.
+  7.25 שעות × 500 ₪ = 3,625 ₪, עוגל ל-3,500 ₪. מחסן שנמצא בשיחת ההשלמה: +0.75 שעה, 375 ₪. מכונת תפירה שנמצאה ביום ההובלה: ללא חיוב. סה״כ 3,875 ₪, 8.00 שעות בפועל, 5 כוכבים, והפניה שחוזרת לתחילת התהליך.
+</div>
+
+<footer>
+  MARK · HDIGITAL · 25.11.2026. דף הקדמה, קודם לאפיונים המפורטים לפי שלב. מה שלא נקבע מסומן בסוגריים או כשאלה פתוחה. נועה היא דמות לדוגמה; אין בדף פרטי לקוחות, מפתחות או פרטי חשבון.
+</footer>
+
+</main>
+</body>
+</html>
